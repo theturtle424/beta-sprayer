@@ -53,17 +53,14 @@ class ViewController: UIViewController {
 //        g_audioPlayer.play()
     }
     
-    func playClip() {
-        let soundNames = [
-            "sick_send",
-            "sick_send_brah",
-            "awesome_dude"]
+    func playClip(soundsArr: [String]) {
         
-        let idx = Int(arc4random_uniform(UInt32(soundNames.count)))
+        
+        let idx = Int(arc4random_uniform(UInt32(soundsArr.count)))
         
         let alertSound = NSURL(
             fileURLWithPath: NSBundle.mainBundle().pathForResource(
-                soundNames[idx],
+                soundsArr[idx],
                 ofType: "m4a")!)
         print(alertSound)
         
@@ -87,6 +84,28 @@ class ViewController: UIViewController {
         }
         self.g_audioPlayer.prepareToPlay()
         self.g_audioPlayer.play()
+    }
+    
+    func playLanding() {
+        self.playClip([
+            "awesome_dude",
+            "sick_send",
+            "sick_send_brah",
+            ])
+    }
+    
+    func playMotivation(){
+        self.playClip([
+            "cmon_keep_pushing",
+            "come_on",
+            "keep_breathin",
+            "keep_that_core_tight",
+            "nice",
+            "yeah_there_it_is",
+            "nice_06",
+            "oh_yeah",
+            "yeah_02",
+            ])
     }
     
     
@@ -123,7 +142,7 @@ class ViewController: UIViewController {
                     // likely a fall
                     if abs(val) > 1.7 {
                         print("big accel: \(val)")
-                        self.playClip()
+                        self.playLanding()
                     }
                 }
             })
