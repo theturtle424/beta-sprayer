@@ -14,10 +14,13 @@ import AVFoundation
 class ViewController: UIViewController {
     
     var g_motionManager = CMMotionManager()
+    var g_altimeter = CMAltimeter()
+    var g_altiQueue = NSOperationQueue()
     var g_accelQueue = NSOperationQueue()
     var g_motionQueue = NSOperationQueue()
     var g_audioPlayer = AVAudioPlayer()
     var g_count = 0
+    var g_curAlt = NSNumber.init(float: 0.0)
 
 //    @IBOutlet weak var amountSlider: UISlider!
 //    @IBOutlet weak var typeSlider: UISlider!
@@ -30,27 +33,6 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func handle_motion_data(data: CMMotionActivity!) {
-//        g_count+=1;
-//        var trigger = g_count % (15 - Int(amountSlider.value));
-//        if trigger != 0 {
-//            return;
-//        }
-//        
-//        var allFiles = NSBundle.mainBundle().pathsForResourcesOfType("m4a", inDirectory: "");
-//        allFiles.count;
-//        var choice = Int(arc4random_uniform(UInt32(allFiles.count)));
-//        print(allFiles[choice]);
-//        
-//        var sound = NSURL(fileURLWithPath: allFiles[choice] as! String)
-//        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
-//        AVAudioSession.sharedInstance().setActive(true, error: nil)
-//        var error:NSError?
-//        g_audioPlayer = AVAudioPlayer(contentsOfURL: sound, error: &error)
-//        g_audioPlayer.prepareToPlay()
-//        g_audioPlayer.play()
     }
     
     func playClip(soundsArr: [String]) {
@@ -113,6 +95,8 @@ class ViewController: UIViewController {
         if self.g_motionManager.accelerometerActive {
             self.g_motionManager.stopAccelerometerUpdates()
         }
+        self.g_altimeter.stopRelativeAltitudeUpdates()
+        self.g_curAlt = NSNumber.init(float: 0.0)
     }
 
 
@@ -124,6 +108,27 @@ class ViewController: UIViewController {
         if self.g_motionManager.accelerometerActive {
             print("Already monitoring acceleration")
             return
+        }
+        
+        if CMAltimeter.isRelativeAltitudeAvailable() {
+            self.g_altimeter.startRelativeAltitudeUpdatesToQueue(self.g_altiQueue, withHandler: {
+                (data, error) in
+                let alt = data?.relativeAltitude
+                print("update: \(alt)")
+                
+                // positive means going up
+                let diff = alt!.floatValue - self.g_curAlt.floatValue
+                let heightInterval = Float(1.1)
+                
+                if alt?.intValue < 0 {
+                    print("going down")
+                }
+                if diff > heightInterval {
+                    print("going up")
+                    self.g_curAlt = alt!
+                    self.playMotivation()
+                }
+            })
         }
         
         self.g_motionManager.accelerometerUpdateInterval = 0.1
