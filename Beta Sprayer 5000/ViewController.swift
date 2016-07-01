@@ -53,68 +53,82 @@ class ViewController: UIViewController {
 //        g_audioPlayer.play()
     }
     
+    func playClip() {
+        let soundNames = [
+            "sick_send",
+            "sick_send_brah",
+            "awesome_dude"]
+        
+        let idx = Int(arc4random_uniform(UInt32(soundNames.count)))
+        
+        let alertSound = NSURL(
+            fileURLWithPath: NSBundle.mainBundle().pathForResource(
+                soundNames[idx],
+                ofType: "m4a")!)
+        print(alertSound)
+        
+        // Removed deprecated use of AVAudioSessionDelegate protocol
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Error")
+            return
+        }
+//        }
+//        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
+//        AVAudioSession.sharedInstance().setActive(true, error: nil)
+        
+        do {
+            try self.g_audioPlayer = AVAudioPlayer(contentsOfURL: alertSound)
+        } catch {
+            print("Error")
+            return
+        }
+        self.g_audioPlayer.prepareToPlay()
+        self.g_audioPlayer.play()
+    }
+    
     
     @IBAction func stopPressed(sender: AnyObject) {
-        if g_motionManager.accelerometerActive {
-            g_motionManager.stopAccelerometerUpdates()
+        if self.g_motionManager.accelerometerActive {
+            self.g_motionManager.stopAccelerometerUpdates()
         }
     }
 
 
     @IBAction func startPressed(sender: AnyObject) {
-        if !g_motionManager.accelerometerAvailable {
+        if !self.g_motionManager.accelerometerAvailable {
             print("Accelerometer not available")
             return
         }
-        if g_motionManager.accelerometerActive {
+        if self.g_motionManager.accelerometerActive {
             print("Already monitoring acceleration")
             return
         }
         
-        g_motionManager.accelerometerUpdateInterval = 0.1
-        g_motionManager.startAccelerometerUpdatesToQueue(g_accelQueue, withHandler: {
+        self.g_motionManager.accelerometerUpdateInterval = 0.1
+        self.g_motionManager.startAccelerometerUpdatesToQueue(self.g_accelQueue, withHandler: {
             (data, error) in
             dispatch_async(dispatch_get_main_queue(), {
                 if error != nil {
                     print(error)
                     return
                 }
-                var xx = data!.acceleration.x
-                var yy = -data!.acceleration.y
-//                var angle = atan2(yy, xx)
-                var zz = data!.acceleration.z
-                if abs(xx) > 1.1 {
-                    print("xx", xx)
-                }
-                if abs(yy) > 1.5 {
-                    print("yy", yy)
-                }
-                if abs(zz) > 1.5 {
-                    print("zz", zz)
-                }
+                let xx = data!.acceleration.x
+                let yy = data!.acceleration.y
+                let zz = data!.acceleration.z
                 
+                for val in [xx, yy, zz] {
+                    // likely a fall
+                    if abs(val) > 1.7 {
+                        print("big accel: \(val)")
+                        self.playClip()
+                    }
+                }
             })
-            
         })
     }
-    
-    
-//        if(g_motionManager.accelerometerAvailable)
-//        {
-//            g_motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue()!, withHandler: {
-//                accelerometerData,error in
-//                let acceleration = accelerometerData!.acceleration
-//                var accelerationZ = CGFloat(acceleration.z)
-//                print(accelerationZ)
-//                g_audioPlayer =
-//                
-//            })
-////        if CMMotionManager. {
-////            g_motion.
-////        } else {
-////            print("no activity")
-//        }
-//    }?
 
 }
 

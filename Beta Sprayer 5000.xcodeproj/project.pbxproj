@@ -18,6 +18,9 @@
 		D522B4491D1AA641009FFDED /* solid.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D522B4431D1AA641009FFDED /* solid.m4a */; };
 		D522B44A1D1AA641009FFDED /* there_it_is.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D522B4441D1AA641009FFDED /* there_it_is.m4a */; };
 		D522B44B1D1AA641009FFDED /* yeah_02.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D522B4451D1AA641009FFDED /* yeah_02.m4a */; };
+		D522B44F1D260F4B009FFDED /* awesome_dude.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D522B44C1D260F4B009FFDED /* awesome_dude.m4a */; };
+		D522B4501D260F4B009FFDED /* sick_send.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D522B44D1D260F4B009FFDED /* sick_send.m4a */; };
+		D522B4511D260F4B009FFDED /* sick_send_brah.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D522B44E1D260F4B009FFDED /* sick_send_brah.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		D522B4431D1AA641009FFDED /* solid.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = solid.m4a; sourceTree = "<group>"; };
 		D522B4441D1AA641009FFDED /* there_it_is.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = there_it_is.m4a; sourceTree = "<group>"; };
 		D522B4451D1AA641009FFDED /* yeah_02.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = yeah_02.m4a; sourceTree = "<group>"; };
+		D522B44C1D260F4B009FFDED /* awesome_dude.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = awesome_dude.m4a; sourceTree = "<group>"; };
+		D522B44D1D260F4B009FFDED /* sick_send.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sick_send.m4a; sourceTree = "<group>"; };
+		D522B44E1D260F4B009FFDED /* sick_send_brah.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sick_send_brah.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,9 @@
 		D522B43F1D1AA629009FFDED /* sounds */ = {
 			isa = PBXGroup;
 			children = (
+				D522B44C1D260F4B009FFDED /* awesome_dude.m4a */,
+				D522B44D1D260F4B009FFDED /* sick_send.m4a */,
+				D522B44E1D260F4B009FFDED /* sick_send_brah.m4a */,
 				D522B4401D1AA641009FFDED /* nice_01.m4a */,
 				D522B4411D1AA641009FFDED /* nice_06.m4a */,
 				D522B4421D1AA641009FFDED /* oh_yeah.m4a */,
@@ -157,6 +166,9 @@
 				D522B4461D1AA641009FFDED /* nice_01.m4a in Resources */,
 				D522B4481D1AA641009FFDED /* oh_yeah.m4a in Resources */,
 				D522B44A1D1AA641009FFDED /* there_it_is.m4a in Resources */,
+				D522B44F1D260F4B009FFDED /* awesome_dude.m4a in Resources */,
+				D522B4511D260F4B009FFDED /* sick_send_brah.m4a in Resources */,
+				D522B4501D260F4B009FFDED /* sick_send.m4a in Resources */,
 				D522B4331D173959009FFDED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
