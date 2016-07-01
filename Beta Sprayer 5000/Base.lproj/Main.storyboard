@@ -27,48 +27,39 @@
                                 <rect key="frame" x="20" y="277" width="560" height="45"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="START"/>
+                                <connections>
+                                    <action selector="startPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="auU-4h-KgT"/>
+                                </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qbl-pN-fMu">
-                                <rect key="frame" x="18" y="239" width="564" height="31"/>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motivation" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTW-8o-Hgq">
-                                <rect key="frame" x="313" y="210" width="267" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Criticism" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgX-nZ-Fkh">
-                                <rect key="frame" x="20" y="210" width="268" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1J-oa-wCb">
+                                <rect key="frame" x="20" y="547" width="560" height="45"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <state key="normal" title="STOP"/>
+                                <connections>
+                                    <action selector="stopPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Upl-wC-eK1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="LgX-nZ-Fkh" secondAttribute="leading" id="0Rk-n9-1pe"/>
                             <constraint firstItem="MTn-UJ-s2H" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="0kx-GB-xPY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g1J-oa-wCb" secondAttribute="trailing" id="4Lg-Li-wEq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gSg-fL-fbg" secondAttribute="trailing" id="4Vo-C0-0Pi"/>
-                            <constraint firstItem="xTW-8o-Hgq" firstAttribute="width" secondItem="LgX-nZ-Fkh" secondAttribute="width" id="5RU-Bx-VGX"/>
-                            <constraint firstItem="Qbl-pN-fMu" firstAttribute="leading" secondItem="LgX-nZ-Fkh" secondAttribute="leading" id="7fk-Od-uTV"/>
                             <constraint firstItem="MTn-UJ-s2H" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="8yJ-RT-KoD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xTW-8o-Hgq" secondAttribute="trailing" id="AIH-zN-qQv"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="g1J-oa-wCb" secondAttribute="leading" id="Eej-sV-hKE"/>
                             <constraint firstAttribute="leadingMargin" secondItem="gSg-fL-fbg" secondAttribute="leading" id="JB9-bI-JHT"/>
-                            <constraint firstItem="Qbl-pN-fMu" firstAttribute="top" secondItem="LgX-nZ-Fkh" secondAttribute="bottom" constant="8" id="JQW-9i-Dh0"/>
-                            <constraint firstItem="Qbl-pN-fMu" firstAttribute="trailing" secondItem="xTW-8o-Hgq" secondAttribute="trailing" id="Nqf-ae-mb8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="g1J-oa-wCb" secondAttribute="bottom" constant="8" symbolic="YES" id="PSz-HW-8Pu"/>
                             <constraint firstItem="gSg-fL-fbg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WeO-b1-Z8J"/>
+                            <constraint firstItem="g1J-oa-wCb" firstAttribute="top" secondItem="gSg-fL-fbg" secondAttribute="bottom" constant="8" id="Xr6-Sd-2R4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gSg-fL-fbg" secondAttribute="bottom" constant="278" id="Zjn-nb-4Cm"/>
                             <constraint firstAttribute="leadingMargin" secondItem="MTn-UJ-s2H" secondAttribute="leading" id="b1w-ui-b6o"/>
-                            <constraint firstItem="gSg-fL-fbg" firstAttribute="top" secondItem="Qbl-pN-fMu" secondAttribute="bottom" constant="8" symbolic="YES" id="bOF-At-9MF"/>
-                            <constraint firstItem="xTW-8o-Hgq" firstAttribute="leading" secondItem="LgX-nZ-Fkh" secondAttribute="trailing" constant="25" id="e0c-3y-JXs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MTn-UJ-s2H" secondAttribute="trailing" id="e5M-Lj-SyI"/>
                             <constraint firstItem="gSg-fL-fbg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="o0p-94-Grz"/>
-                            <constraint firstItem="xTW-8o-Hgq" firstAttribute="height" secondItem="LgX-nZ-Fkh" secondAttribute="height" id="ykf-Ln-kXQ"/>
-                            <constraint firstItem="Qbl-pN-fMu" firstAttribute="top" secondItem="xTW-8o-Hgq" secondAttribute="bottom" constant="8" id="ypa-NL-jGz"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="8yJ-RT-KoD"/>
+                                <exclude reference="Xr6-Sd-2R4"/>
                                 <exclude reference="Zjn-nb-4Cm"/>
                             </mask>
                         </variation>
