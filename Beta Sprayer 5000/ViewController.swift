@@ -20,14 +20,33 @@ class ViewController: UIViewController {
     var g_motionQueue = NSOperationQueue()
     var g_audioPlayer = AVAudioPlayer()
     var g_count = 0
-    var g_curAlt = NSNumber.init(float: 0.0)
+    var g_lastAltitudeMark = NSNumber.init(float: 0.0)
+    
+    var g_altitudeThresh = Float(0.5)
+    var g_accelThresh = Float(2.1)
 
 //    @IBOutlet weak var amountSlider: UISlider!
 //    @IBOutlet weak var typeSlider: UISlider!
     
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    
+    @IBOutlet weak var altitudeSlider: UISlider!
+    @IBOutlet weak var altitudeThreshLabel: UILabel!
+    @IBOutlet weak var altitudeLabel: UILabel!
+    
+    @IBOutlet weak var accelSlider: UISlider!
+    @IBOutlet weak var accelThreshLabel: UILabel!
+    @IBOutlet weak var xAccel: UILabel!
+    @IBOutlet weak var yAccel: UILabel!
+    @IBOutlet weak var zAccel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        stopButton.enabled = false
+        self.altitudeThreshLabel.text = "Altitude Threshold: \(self.altitudeSlider.value) m"
+        self.accelThreshLabel.text = "Acceleration Threshold: \(self.accelSlider.value) G"
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,7 +115,10 @@ class ViewController: UIViewController {
             self.g_motionManager.stopAccelerometerUpdates()
         }
         self.g_altimeter.stopRelativeAltitudeUpdates()
-        self.g_curAlt = NSNumber.init(float: 0.0)
+        // reset the last altitude thresh so the new updates start at 0
+        self.g_lastAltitudeMark = NSNumber.init(float: 0.0)
+        stopButton.enabled = false
+        startButton.enabled = true
     }
 
 
@@ -114,18 +136,12 @@ class ViewController: UIViewController {
             self.g_altimeter.startRelativeAltitudeUpdatesToQueue(self.g_altiQueue, withHandler: {
                 (data, error) in
                 let alt = data?.relativeAltitude
-                print("update: \(alt)")
+                self.altitudeLabel.text = "\(alt!) m"
                 
                 // positive means going up
-                let diff = alt!.floatValue - self.g_curAlt.floatValue
-                let heightInterval = Float(1.1)
-                
-                if alt?.intValue < 0 {
-                    print("going down")
-                }
-                if diff > heightInterval {
-                    print("going up")
-                    self.g_curAlt = alt!
+                let diff = alt!.floatValue - self.g_lastAltitudeMark.floatValue
+                if diff > self.g_altitudeThresh {
+                    self.g_lastAltitudeMark = alt!
                     self.playMotivation()
                 }
             })
@@ -142,16 +158,32 @@ class ViewController: UIViewController {
                 let xx = data!.acceleration.x
                 let yy = data!.acceleration.y
                 let zz = data!.acceleration.z
+                self.xAccel.text = "\(xx)"
+                self.yAccel.text = "\(yy)"
+                self.zAccel.text = "\(zz)"
                 
                 for val in [xx, yy, zz] {
                     // likely a fall
-                    if abs(val) > 1.7 {
-                        print("big accel: \(val)")
+                    if Float(abs(val)) > self.g_accelThresh {
                         self.playLanding()
                     }
                 }
             })
         })
+        stopButton.enabled = true
+        startButton.enabled = false
+    }
+
+    @IBAction func fallSliderChanged(sender: UISlider) {
+        let newVal = sender.value
+        self.g_accelThresh = newVal
+        self.accelThreshLabel.text = "Acceleration Threshold: \(newVal) G"
+        
+    }
+    @IBAction func altitudeSliderChanged(sender: UISlider) {
+        let newVal = sender.value
+        self.g_altitudeThresh = newVal
+        self.altitudeThreshLabel.text = "Altitude Threshold: \(newVal) m"
     }
 
 }
