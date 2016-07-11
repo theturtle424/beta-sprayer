@@ -14,17 +14,39 @@ import AVFoundation
 class ViewController: UIViewController {
     
     var g_motionManager = CMMotionManager()
+    var g_altimeter = CMAltimeter()
+    var g_altiQueue = NSOperationQueue()
     var g_accelQueue = NSOperationQueue()
     var g_motionQueue = NSOperationQueue()
     var g_audioPlayer = AVAudioPlayer()
     var g_count = 0
+    var g_lastAltitudeMark = NSNumber.init(float: 0.0)
+    
+    var g_altitudeThresh = Float(0.5)
+    var g_accelThresh = Float(2.1)
 
 //    @IBOutlet weak var amountSlider: UISlider!
 //    @IBOutlet weak var typeSlider: UISlider!
     
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var stopButton: UIButton!
+    
+    @IBOutlet weak var altitudeSlider: UISlider!
+    @IBOutlet weak var altitudeThreshLabel: UILabel!
+    @IBOutlet weak var altitudeLabel: UILabel!
+    
+    @IBOutlet weak var accelSlider: UISlider!
+    @IBOutlet weak var accelThreshLabel: UILabel!
+    @IBOutlet weak var xAccel: UILabel!
+    @IBOutlet weak var yAccel: UILabel!
+    @IBOutlet weak var zAccel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        stopButton.enabled = false
+        self.altitudeThreshLabel.text = "Altitude Threshold: \(self.altitudeSlider.value) m"
+        self.accelThreshLabel.text = "Acceleration Threshold: \(self.accelSlider.value) G"
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,38 +54,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func handle_motion_data(data: CMMotionActivity!) {
-//        g_count+=1;
-//        var trigger = g_count % (15 - Int(amountSlider.value));
-//        if trigger != 0 {
-//            return;
-//        }
-//        
-//        var allFiles = NSBundle.mainBundle().pathsForResourcesOfType("m4a", inDirectory: "");
-//        allFiles.count;
-//        var choice = Int(arc4random_uniform(UInt32(allFiles.count)));
-//        print(allFiles[choice]);
-//        
-//        var sound = NSURL(fileURLWithPath: allFiles[choice] as! String)
-//        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
-//        AVAudioSession.sharedInstance().setActive(true, error: nil)
-//        var error:NSError?
-//        g_audioPlayer = AVAudioPlayer(contentsOfURL: sound, error: &error)
-//        g_audioPlayer.prepareToPlay()
-//        g_audioPlayer.play()
-    }
-    
-    func playClip() {
-        let soundNames = [
-            "sick_send",
-            "sick_send_brah",
-            "awesome_dude"]
+    func playClip(soundsArr: [String]) {
         
-        let idx = Int(arc4random_uniform(UInt32(soundNames.count)))
+        
+        let idx = Int(arc4random_uniform(UInt32(soundsArr.count)))
         
         let alertSound = NSURL(
             fileURLWithPath: NSBundle.mainBundle().pathForResource(
-                soundNames[idx],
+                soundsArr[idx],
                 ofType: "m4a")!)
         print(alertSound)
         
@@ -89,11 +87,38 @@ class ViewController: UIViewController {
         self.g_audioPlayer.play()
     }
     
+    func playLanding() {
+        self.playClip([
+            "awesome_dude",
+            "sick_send",
+            "sick_send_brah",
+            ])
+    }
+    
+    func playMotivation(){
+        self.playClip([
+            "cmon_keep_pushing",
+            "come_on",
+            "keep_breathin",
+            "keep_that_core_tight",
+            "nice",
+            "yeah_there_it_is",
+            "nice_06",
+            "oh_yeah",
+            "yeah_02",
+            ])
+    }
+    
     
     @IBAction func stopPressed(sender: AnyObject) {
         if self.g_motionManager.accelerometerActive {
             self.g_motionManager.stopAccelerometerUpdates()
         }
+        self.g_altimeter.stopRelativeAltitudeUpdates()
+        // reset the last altitude thresh so the new updates start at 0
+        self.g_lastAltitudeMark = NSNumber.init(float: 0.0)
+        stopButton.enabled = false
+        startButton.enabled = true
     }
 
 
@@ -107,6 +132,21 @@ class ViewController: UIViewController {
             return
         }
         
+        if CMAltimeter.isRelativeAltitudeAvailable() {
+            self.g_altimeter.startRelativeAltitudeUpdatesToQueue(self.g_altiQueue, withHandler: {
+                (data, error) in
+                let alt = data?.relativeAltitude
+                self.altitudeLabel.text = "\(alt!) m"
+                
+                // positive means going up
+                let diff = alt!.floatValue - self.g_lastAltitudeMark.floatValue
+                if diff > self.g_altitudeThresh {
+                    self.g_lastAltitudeMark = alt!
+                    self.playMotivation()
+                }
+            })
+        }
+        
         self.g_motionManager.accelerometerUpdateInterval = 0.1
         self.g_motionManager.startAccelerometerUpdatesToQueue(self.g_accelQueue, withHandler: {
             (data, error) in
@@ -118,16 +158,32 @@ class ViewController: UIViewController {
                 let xx = data!.acceleration.x
                 let yy = data!.acceleration.y
                 let zz = data!.acceleration.z
+                self.xAccel.text = "\(xx)"
+                self.yAccel.text = "\(yy)"
+                self.zAccel.text = "\(zz)"
                 
                 for val in [xx, yy, zz] {
                     // likely a fall
-                    if abs(val) > 1.7 {
-                        print("big accel: \(val)")
-                        self.playClip()
+                    if Float(abs(val)) > self.g_accelThresh {
+                        self.playLanding()
                     }
                 }
             })
         })
+        stopButton.enabled = true
+        startButton.enabled = false
+    }
+
+    @IBAction func fallSliderChanged(sender: UISlider) {
+        let newVal = sender.value
+        self.g_accelThresh = newVal
+        self.accelThreshLabel.text = "Acceleration Threshold: \(newVal) G"
+        
+    }
+    @IBAction func altitudeSliderChanged(sender: UISlider) {
+        let newVal = sender.value
+        self.g_altitudeThresh = newVal
+        self.altitudeThreshLabel.text = "Altitude Threshold: \(newVal) m"
     }
 
 }
