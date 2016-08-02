@@ -117,6 +117,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzM-Ka-TTl">
+                                <rect key="frame" x="20" y="214" width="560" height="191"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -155,8 +159,10 @@
                             <constraint firstItem="bg5-jA-uHa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="P4f-t0-V9V"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5jN-Pe-AXX" secondAttribute="trailing" id="P8Q-aG-TYJ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="g1J-oa-wCb" secondAttribute="bottom" constant="8" symbolic="YES" id="PSz-HW-8Pu"/>
+                            <constraint firstItem="vzM-Ka-TTl" firstAttribute="top" secondItem="Gci-lm-B9M" secondAttribute="bottom" constant="8" id="TMb-95-08G"/>
                             <constraint firstItem="gSg-fL-fbg" firstAttribute="top" secondItem="4Xd-ez-hlM" secondAttribute="bottom" constant="8" symbolic="YES" id="UJj-TS-SL5"/>
                             <constraint firstItem="bpC-Z9-GFe" firstAttribute="height" secondItem="Gci-lm-B9M" secondAttribute="height" id="Vv6-3z-no8"/>
+                            <constraint firstItem="5jN-Pe-AXX" firstAttribute="top" secondItem="vzM-Ka-TTl" secondAttribute="bottom" constant="8" id="W3G-6c-q2a"/>
                             <constraint firstItem="gSg-fL-fbg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WeO-b1-Z8J"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sWX-7x-GXP" secondAttribute="trailing" id="XeZ-M7-EZ3"/>
                             <constraint firstItem="g1J-oa-wCb" firstAttribute="top" secondItem="gSg-fL-fbg" secondAttribute="bottom" constant="8" id="Xr6-Sd-2R4"/>
@@ -179,6 +185,8 @@
                             <constraint firstItem="niA-Hn-dwJ" firstAttribute="top" secondItem="CBy-vh-Edq" secondAttribute="bottom" constant="8" symbolic="YES" id="vFo-Na-0Vm"/>
                             <constraint firstItem="9R8-EA-Q6q" firstAttribute="top" secondItem="sWX-7x-GXP" secondAttribute="bottom" constant="8" symbolic="YES" id="vUh-rJ-9vv"/>
                             <constraint firstItem="cz8-aX-1Cc" firstAttribute="top" secondItem="0UG-OQ-Bss" secondAttribute="bottom" constant="8" symbolic="YES" id="vkU-nB-2zI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vzM-Ka-TTl" secondAttribute="trailing" id="xgB-Qq-j2a"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="vzM-Ka-TTl" secondAttribute="leading" id="zvc-Jh-XSx"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -195,6 +203,7 @@
                     <connections>
                         <outlet property="accelSlider" destination="sWX-7x-GXP" id="XFz-uc-45J"/>
                         <outlet property="accelThreshLabel" destination="CBy-vh-Edq" id="MrU-4Y-AU6"/>
+                        <outlet property="altitudeGraphView" destination="vzM-Ka-TTl" id="7pA-zG-aUC"/>
                         <outlet property="altitudeLabel" destination="Cb6-q0-0aH" id="lZH-C6-FZv"/>
                         <outlet property="altitudeSlider" destination="4Xd-ez-hlM" id="Jy7-3U-xWE"/>
                         <outlet property="altitudeThreshLabel" destination="bg5-jA-uHa" id="RcN-FY-6m0"/>

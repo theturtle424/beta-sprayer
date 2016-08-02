@@ -41,9 +41,10 @@ class ClimbViewController: UIViewController {
     @IBOutlet weak var yAccel: UILabel!
     @IBOutlet weak var zAccel: UILabel!
     
+    @IBOutlet weak var altitudeGraphView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         stopButton.enabled = false
         self.altitudeThreshLabel.text = "Altitude Threshold: \(self.altitudeSlider.value) m"
         self.accelThreshLabel.text = "Acceleration Threshold: \(self.accelSlider.value) G"
@@ -65,7 +66,6 @@ class ClimbViewController: UIViewController {
                 ofType: "m4a")!)
         print(alertSound)
         
-        // Removed deprecated use of AVAudioSessionDelegate protocol
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -73,9 +73,6 @@ class ClimbViewController: UIViewController {
             print("Error")
             return
         }
-        //        }
-        //        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
-        //        AVAudioSession.sharedInstance().setActive(true, error: nil)
         
         do {
             try self.g_audioPlayer = AVAudioPlayer(contentsOfURL: alertSound)
