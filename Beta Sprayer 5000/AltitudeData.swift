@@ -7,9 +7,12 @@
 //
 
 import Foundation
-//import RealmSwift
-//
-//class AltitudeEntry: Object {
-//    dynamic var timestamp
-//    dynamic var altitude = 0
-//}
+import RealmSwift
+
+/**
+ * Data point for altitude data
+ */
+class AltDataPt: Object {
+    dynamic var time = NSDate()
+    dynamic var altitude = 0.0
+}
