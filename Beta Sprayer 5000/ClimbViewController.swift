@@ -10,6 +10,7 @@
 import UIKit
 import CoreMotion
 import AVFoundation
+import RealmSwift
 
 class ClimbViewController: UIViewController {
     
@@ -24,6 +25,8 @@ class ClimbViewController: UIViewController {
     
     var g_altitudeThresh = Float(0.5)
     var g_accelThresh = Float(2.1)
+    
+    var g_activityStart = NSDate()
     
     //    @IBOutlet weak var amountSlider: UISlider!
     //    @IBOutlet weak var typeSlider: UISlider!
@@ -120,6 +123,7 @@ class ClimbViewController: UIViewController {
     
     
     @IBAction func startPressed(sender: AnyObject) {
+        self.g_activityStart = NSDate()
         if !self.g_motionManager.accelerometerAvailable {
             print("Accelerometer not available")
             return
@@ -134,6 +138,19 @@ class ClimbViewController: UIViewController {
                 (data, error) in
                 let alt = data?.relativeAltitude
                 self.altitudeLabel.text = "\(alt!) m"
+                
+                let timestamp = NSDate(timeInterval: (data?.timestamp)!, sinceDate: self.g_activityStart)
+                
+                let realm = try! Realm()
+                
+                let pt = AltDataPt()
+                pt.altitude = (alt?.floatValue)!
+                pt.time = timestamp
+                
+                realm.beginWrite()
+                realm.add(pt)
+                try! realm.commitWrite()
+                
                 
                 // positive means going up
                 let diff = alt!.floatValue - self.g_lastAltitudeMark.floatValue

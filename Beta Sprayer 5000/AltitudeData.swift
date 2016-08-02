@@ -14,5 +14,5 @@ import RealmSwift
  */
 class AltDataPt: Object {
     dynamic var time = NSDate()
-    dynamic var altitude = 0.0
+    dynamic var altitude = Float(0)
 }
