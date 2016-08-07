@@ -126,11 +126,20 @@ class ClimbViewController: UIViewController {
         
 //        let realm  = try! Realm()
         let results = RLMRealm.defaultRealm().allObjects("AltDataPt")
+        print("results")
+        print(results)
         
-        let set = RealmLineDataSet(results: results, yValueField: "altitude", label: "altitunde")
+        let set = RealmLineDataSet(results: results, yValueField: "altitude", xIndexField: "time")
         var dataSets = [set]
         
+        print("set")
+        print(set)
+        
         let data = RealmLineData(results: results, xValueField: "time", dataSets: dataSets)
+        print("data")
+        print(data)
+        
+        print("graphing")
         altitudeGraphView.data = data
         altitudeGraphView.animate(yAxisDuration: 1.4)
         
@@ -165,6 +174,8 @@ class ClimbViewController: UIViewController {
                 realm.beginWrite()
                 realm.add(pt)
                 try! realm.commitWrite()
+                
+                print("added pt to realm")
                 
                 
                 // positive means going up
