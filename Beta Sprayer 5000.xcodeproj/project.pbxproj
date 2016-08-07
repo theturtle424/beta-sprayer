@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D511408D1D459D7000A81947 /* ClimbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D511408C1D459D7000A81947 /* ClimbViewController.swift */; };
 		D522B42E1D173959009FFDED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D522B42D1D173959009FFDED /* AppDelegate.swift */; };
-		D522B4301D173959009FFDED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D522B42F1D173959009FFDED /* ViewController.swift */; };
 		D522B4331D173959009FFDED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D522B4311D173959009FFDED /* Main.storyboard */; };
 		D522B4351D173959009FFDED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D522B4341D173959009FFDED /* Assets.xcassets */; };
 		D522B4381D173959009FFDED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D522B4361D173959009FFDED /* LaunchScreen.storyboard */; };
@@ -25,13 +24,104 @@
 		D522B45B1D261275009FFDED /* keep_that_core_tight.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D522B4551D261275009FFDED /* keep_that_core_tight.m4a */; };
 		D522B45C1D261275009FFDED /* nice.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D522B4561D261275009FFDED /* nice.m4a */; };
 		D522B45D1D261275009FFDED /* yeah_there_it_is.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D522B4571D261275009FFDED /* yeah_there_it_is.m4a */; };
+		D5321E6F1D57715600D69D1F /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5321E681D57714B00D69D1F /* Charts.framework */; };
+		D5321E701D57715600D69D1F /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5321E681D57714B00D69D1F /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D5321E911D57785C00D69D1F /* ChartsRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5321E8A1D57771300D69D1F /* ChartsRealm.framework */; };
+		D5321E921D57785C00D69D1F /* ChartsRealm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5321E8A1D57771300D69D1F /* ChartsRealm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D594B7721D4EA8D300D86BDA /* AltitudeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D594B7711D4EA8D300D86BDA /* AltitudeData.swift */; };
+		D5B13CDA1D50280A007090CF /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B13CD81D50280A007090CF /* Realm.framework */; };
+		D5B13CDB1D50280A007090CF /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5B13CD81D50280A007090CF /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D5B13CDC1D50280A007090CF /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B13CD91D50280A007090CF /* RealmSwift.framework */; };
+		D5B13CDD1D50280A007090CF /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5B13CD91D50280A007090CF /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D5321E671D57714B00D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E601D57714B00D69D1F /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		D5321E691D57714B00D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E601D57714B00D69D1F /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		D5321E6B1D57714B00D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E601D57714B00D69D1F /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		D5321E6D1D57714B00D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E601D57714B00D69D1F /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		D5321E711D57715600D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E601D57714B00D69D1F /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		D5321E891D57771300D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "ChartsRealm-iOS";
+		};
+		D5321E8B1D57771300D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "ChartsRealm-TV";
+		};
+		D5321E8D1D57771300D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA899431CADB7F20012ED64;
+			remoteInfo = "ChartsRealm-OSX";
+		};
+		D5321E931D57785C00D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "ChartsRealm-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D5B13CDE1D50280A007090CF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D5321E701D57715600D69D1F /* Charts.framework in Embed Frameworks */,
+				D5B13CDD1D50280A007090CF /* RealmSwift.framework in Embed Frameworks */,
+				D5B13CDB1D50280A007090CF /* Realm.framework in Embed Frameworks */,
+				D5321E921D57785C00D69D1F /* ChartsRealm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D511408C1D459D7000A81947 /* ClimbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClimbViewController.swift; sourceTree = "<group>"; };
 		D522B42A1D173959009FFDED /* Beta Sprayer 5000.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Beta Sprayer 5000.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D522B42D1D173959009FFDED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D522B42F1D173959009FFDED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D522B4321D173959009FFDED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D522B4341D173959009FFDED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D522B4371D173959009FFDED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +138,11 @@
 		D522B4551D261275009FFDED /* keep_that_core_tight.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = keep_that_core_tight.m4a; sourceTree = "<group>"; };
 		D522B4561D261275009FFDED /* nice.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice.m4a; sourceTree = "<group>"; };
 		D522B4571D261275009FFDED /* yeah_there_it_is.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = yeah_there_it_is.m4a; sourceTree = "<group>"; };
+		D5321E601D57714B00D69D1F /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../Charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
+		D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChartsRealm.xcodeproj; path = "../Charts-master/ChartsRealm/ChartsRealm.xcodeproj"; sourceTree = "<group>"; };
+		D594B7711D4EA8D300D86BDA /* AltitudeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AltitudeData.swift; path = "Beta Sprayer 5000/AltitudeData.swift"; sourceTree = "<group>"; };
+		D5B13CD81D50280A007090CF /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		D5B13CD91D50280A007090CF /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,17 +150,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5321E6F1D57715600D69D1F /* Charts.framework in Frameworks */,
+				D5B13CDC1D50280A007090CF /* RealmSwift.framework in Frameworks */,
+				D5B13CDA1D50280A007090CF /* Realm.framework in Frameworks */,
+				D5321E911D57785C00D69D1F /* ChartsRealm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		975E0DD0C76265A40B3237AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D522B4211D173959009FFDED = {
 			isa = PBXGroup;
 			children = (
+				D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */,
+				D5321E601D57714B00D69D1F /* Charts.xcodeproj */,
+				D5B13CD81D50280A007090CF /* Realm.framework */,
+				D5B13CD91D50280A007090CF /* RealmSwift.framework */,
 				D522B42C1D173959009FFDED /* Beta Sprayer 5000 */,
 				D522B42B1D173959009FFDED /* Products */,
+				975E0DD0C76265A40B3237AE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,11 +191,11 @@
 		D522B42C1D173959009FFDED /* Beta Sprayer 5000 */ = {
 			isa = PBXGroup;
 			children = (
+				D5B13CE01D502958007090CF /* DataModels */,
+				D5B13CDF1D50294E007090CF /* Views */,
 				D522B43F1D1AA629009FFDED /* sounds */,
 				D522B42D1D173959009FFDED /* AppDelegate.swift */,
-				D522B42F1D173959009FFDED /* ViewController.swift */,
 				D522B4311D173959009FFDED /* Main.storyboard */,
-				D511408C1D459D7000A81947 /* ClimbViewController.swift */,
 				D522B4341D173959009FFDED /* Assets.xcassets */,
 				D522B4361D173959009FFDED /* LaunchScreen.storyboard */,
 				D522B4391D173959009FFDED /* Info.plist */,
@@ -111,6 +222,44 @@
 			name = sounds;
 			sourceTree = "<group>";
 		};
+		D5321E611D57714B00D69D1F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5321E681D57714B00D69D1F /* Charts.framework */,
+				D5321E6A1D57714B00D69D1F /* Charts.framework */,
+				D5321E6C1D57714B00D69D1F /* Charts.framework */,
+				D5321E6E1D57714B00D69D1F /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D5321E831D57771200D69D1F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5321E8A1D57771300D69D1F /* ChartsRealm.framework */,
+				D5321E8C1D57771300D69D1F /* ChartsRealm.framework */,
+				D5321E8E1D57771300D69D1F /* ChartsRealm.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D5B13CDF1D50294E007090CF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D511408C1D459D7000A81947 /* ClimbViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D5B13CE01D502958007090CF /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				D594B7711D4EA8D300D86BDA /* AltitudeData.swift */,
+			);
+			name = DataModels;
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,10 +270,13 @@
 				D522B4261D173959009FFDED /* Sources */,
 				D522B4271D173959009FFDED /* Frameworks */,
 				D522B4281D173959009FFDED /* Resources */,
+				D5B13CDE1D50280A007090CF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D5321E721D57715600D69D1F /* PBXTargetDependency */,
+				D5321E941D57785C00D69D1F /* PBXTargetDependency */,
 			);
 			name = "Beta Sprayer 5000";
 			productName = "Beta Sprayer 5000";
@@ -158,12 +310,74 @@
 			mainGroup = D522B4211D173959009FFDED;
 			productRefGroup = D522B42B1D173959009FFDED /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D5321E611D57714B00D69D1F /* Products */;
+					ProjectRef = D5321E601D57714B00D69D1F /* Charts.xcodeproj */;
+				},
+				{
+					ProductGroup = D5321E831D57771200D69D1F /* Products */;
+					ProjectRef = D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D522B4291D173959009FFDED /* Beta Sprayer 5000 */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D5321E681D57714B00D69D1F /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = D5321E671D57714B00D69D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5321E6A1D57714B00D69D1F /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = D5321E691D57714B00D69D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5321E6C1D57714B00D69D1F /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = D5321E6B1D57714B00D69D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5321E6E1D57714B00D69D1F /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = D5321E6D1D57714B00D69D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5321E8A1D57771300D69D1F /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = D5321E891D57771300D69D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5321E8C1D57771300D69D1F /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = D5321E8B1D57771300D69D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5321E8E1D57771300D69D1F /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = D5321E8D1D57771300D69D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D522B4281D173959009FFDED /* Resources */ = {
@@ -196,12 +410,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				D511408D1D459D7000A81947 /* ClimbViewController.swift in Sources */,
-				D522B4301D173959009FFDED /* ViewController.swift in Sources */,
 				D522B42E1D173959009FFDED /* AppDelegate.swift in Sources */,
+				D594B7721D4EA8D300D86BDA /* AltitudeData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D5321E721D57715600D69D1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = D5321E711D57715600D69D1F /* PBXContainerItemProxy */;
+		};
+		D5321E941D57785C00D69D1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ChartsRealm-iOS";
+			targetProxy = D5321E931D57785C00D69D1F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D522B4311D173959009FFDED /* Main.storyboard */ = {
@@ -312,9 +539,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Beta Sprayer 5000/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fdehart.Beta-Sprayer-5000";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -327,9 +560,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Beta Sprayer 5000/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.fdehart.Beta-Sprayer-5000";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

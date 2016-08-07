@@ -10,6 +10,10 @@
 import UIKit
 import CoreMotion
 import AVFoundation
+import RealmSwift
+import Realm
+import Charts
+import ChartsRealm
 
 class ClimbViewController: UIViewController {
     
@@ -24,6 +28,8 @@ class ClimbViewController: UIViewController {
     
     var g_altitudeThresh = Float(0.5)
     var g_accelThresh = Float(2.1)
+    
+    var g_activityStart = NSDate()
     
     //    @IBOutlet weak var amountSlider: UISlider!
     //    @IBOutlet weak var typeSlider: UISlider!
@@ -41,12 +47,14 @@ class ClimbViewController: UIViewController {
     @IBOutlet weak var yAccel: UILabel!
     @IBOutlet weak var zAccel: UILabel!
     
+    @IBOutlet weak var altitudeGraphView: LineChartView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         stopButton.enabled = false
         self.altitudeThreshLabel.text = "Altitude Threshold: \(self.altitudeSlider.value) m"
         self.accelThreshLabel.text = "Acceleration Threshold: \(self.accelSlider.value) G"
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,7 +73,6 @@ class ClimbViewController: UIViewController {
                 ofType: "m4a")!)
         print(alertSound)
         
-        // Removed deprecated use of AVAudioSessionDelegate protocol
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -73,9 +80,6 @@ class ClimbViewController: UIViewController {
             print("Error")
             return
         }
-        //        }
-        //        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
-        //        AVAudioSession.sharedInstance().setActive(true, error: nil)
         
         do {
             try self.g_audioPlayer = AVAudioPlayer(contentsOfURL: alertSound)
@@ -119,10 +123,31 @@ class ClimbViewController: UIViewController {
         self.g_lastAltitudeMark = NSNumber.init(float: 0.0)
         stopButton.enabled = false
         startButton.enabled = true
+        
+//        let realm  = try! Realm()
+        let results = RLMRealm.defaultRealm().allObjects("AltDataPt")
+        print("results")
+        print(results)
+        
+        let set = RealmLineDataSet(results: results, yValueField: "altitude", xIndexField: "time")
+        var dataSets = [set]
+        
+        print("set")
+        print(set)
+        
+        let data = RealmLineData(results: results, xValueField: "time", dataSets: dataSets)
+        print("data")
+        print(data)
+        
+        print("graphing")
+        altitudeGraphView.data = data
+        altitudeGraphView.animate(yAxisDuration: 1.4)
+        
     }
     
     
     @IBAction func startPressed(sender: AnyObject) {
+        self.g_activityStart = NSDate()
         if !self.g_motionManager.accelerometerAvailable {
             print("Accelerometer not available")
             return
@@ -137,6 +162,21 @@ class ClimbViewController: UIViewController {
                 (data, error) in
                 let alt = data?.relativeAltitude
                 self.altitudeLabel.text = "\(alt!) m"
+                
+                let timestamp = NSDate(timeInterval: (data?.timestamp)!, sinceDate: self.g_activityStart)
+                
+                let realm = try! Realm()
+                
+                let pt = AltDataPt()
+                pt.altitude = (alt?.floatValue)!
+                pt.time = timestamp
+                
+                realm.beginWrite()
+                realm.add(pt)
+                try! realm.commitWrite()
+                
+                print("added pt to realm")
+                
                 
                 // positive means going up
                 let diff = alt!.floatValue - self.g_lastAltitudeMark.floatValue
