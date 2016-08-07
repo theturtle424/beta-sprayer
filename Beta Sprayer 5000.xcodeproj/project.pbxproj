@@ -26,6 +26,8 @@
 		D522B45D1D261275009FFDED /* yeah_there_it_is.m4a in Resources */ = {isa = PBXBuildFile; fileRef = D522B4571D261275009FFDED /* yeah_there_it_is.m4a */; };
 		D5321E6F1D57715600D69D1F /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5321E681D57714B00D69D1F /* Charts.framework */; };
 		D5321E701D57715600D69D1F /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5321E681D57714B00D69D1F /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D5321E911D57785C00D69D1F /* ChartsRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5321E8A1D57771300D69D1F /* ChartsRealm.framework */; };
+		D5321E921D57785C00D69D1F /* ChartsRealm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5321E8A1D57771300D69D1F /* ChartsRealm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D594B7721D4EA8D300D86BDA /* AltitudeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D594B7711D4EA8D300D86BDA /* AltitudeData.swift */; };
 		D5B13CDA1D50280A007090CF /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B13CD81D50280A007090CF /* Realm.framework */; };
 		D5B13CDB1D50280A007090CF /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D5B13CD81D50280A007090CF /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -69,6 +71,34 @@
 			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
 			remoteInfo = "Charts-iOS";
 		};
+		D5321E891D57771300D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "ChartsRealm-iOS";
+		};
+		D5321E8B1D57771300D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "ChartsRealm-TV";
+		};
+		D5321E8D1D57771300D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA899431CADB7F20012ED64;
+			remoteInfo = "ChartsRealm-OSX";
+		};
+		D5321E931D57785C00D69D1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "ChartsRealm-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -81,6 +111,7 @@
 				D5321E701D57715600D69D1F /* Charts.framework in Embed Frameworks */,
 				D5B13CDD1D50280A007090CF /* RealmSwift.framework in Embed Frameworks */,
 				D5B13CDB1D50280A007090CF /* Realm.framework in Embed Frameworks */,
+				D5321E921D57785C00D69D1F /* ChartsRealm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +139,7 @@
 		D522B4561D261275009FFDED /* nice.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice.m4a; sourceTree = "<group>"; };
 		D522B4571D261275009FFDED /* yeah_there_it_is.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = yeah_there_it_is.m4a; sourceTree = "<group>"; };
 		D5321E601D57714B00D69D1F /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../Charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
+		D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ChartsRealm.xcodeproj; path = "../Charts-master/ChartsRealm/ChartsRealm.xcodeproj"; sourceTree = "<group>"; };
 		D594B7711D4EA8D300D86BDA /* AltitudeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AltitudeData.swift; path = "Beta Sprayer 5000/AltitudeData.swift"; sourceTree = "<group>"; };
 		D5B13CD81D50280A007090CF /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		D5B13CD91D50280A007090CF /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
@@ -121,6 +153,7 @@
 				D5321E6F1D57715600D69D1F /* Charts.framework in Frameworks */,
 				D5B13CDC1D50280A007090CF /* RealmSwift.framework in Frameworks */,
 				D5B13CDA1D50280A007090CF /* Realm.framework in Frameworks */,
+				D5321E911D57785C00D69D1F /* ChartsRealm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +170,7 @@
 		D522B4211D173959009FFDED = {
 			isa = PBXGroup;
 			children = (
+				D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */,
 				D5321E601D57714B00D69D1F /* Charts.xcodeproj */,
 				D5B13CD81D50280A007090CF /* Realm.framework */,
 				D5B13CD91D50280A007090CF /* RealmSwift.framework */,
@@ -199,6 +233,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D5321E831D57771200D69D1F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5321E8A1D57771300D69D1F /* ChartsRealm.framework */,
+				D5321E8C1D57771300D69D1F /* ChartsRealm.framework */,
+				D5321E8E1D57771300D69D1F /* ChartsRealm.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D5B13CDF1D50294E007090CF /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +276,7 @@
 			);
 			dependencies = (
 				D5321E721D57715600D69D1F /* PBXTargetDependency */,
+				D5321E941D57785C00D69D1F /* PBXTargetDependency */,
 			);
 			name = "Beta Sprayer 5000";
 			productName = "Beta Sprayer 5000";
@@ -270,6 +315,10 @@
 					ProductGroup = D5321E611D57714B00D69D1F /* Products */;
 					ProjectRef = D5321E601D57714B00D69D1F /* Charts.xcodeproj */;
 				},
+				{
+					ProductGroup = D5321E831D57771200D69D1F /* Products */;
+					ProjectRef = D5321E821D57771200D69D1F /* ChartsRealm.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -305,6 +354,27 @@
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
 			remoteRef = D5321E6D1D57714B00D69D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5321E8A1D57771300D69D1F /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = D5321E891D57771300D69D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5321E8C1D57771300D69D1F /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = D5321E8B1D57771300D69D1F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D5321E8E1D57771300D69D1F /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = D5321E8D1D57771300D69D1F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -352,6 +422,11 @@
 			isa = PBXTargetDependency;
 			name = "Charts-iOS";
 			targetProxy = D5321E711D57715600D69D1F /* PBXContainerItemProxy */;
+		};
+		D5321E941D57785C00D69D1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ChartsRealm-iOS";
+			targetProxy = D5321E931D57785C00D69D1F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

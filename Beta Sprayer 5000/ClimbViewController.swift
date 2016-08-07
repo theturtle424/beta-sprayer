@@ -11,6 +11,9 @@ import UIKit
 import CoreMotion
 import AVFoundation
 import RealmSwift
+import Realm
+import Charts
+import ChartsRealm
 
 class ClimbViewController: UIViewController {
     
@@ -44,13 +47,14 @@ class ClimbViewController: UIViewController {
     @IBOutlet weak var yAccel: UILabel!
     @IBOutlet weak var zAccel: UILabel!
     
-    @IBOutlet weak var altitudeGraphView: UIView!
+    @IBOutlet weak var altitudeGraphView: LineChartView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         stopButton.enabled = false
         self.altitudeThreshLabel.text = "Altitude Threshold: \(self.altitudeSlider.value) m"
         self.accelThreshLabel.text = "Acceleration Threshold: \(self.accelSlider.value) G"
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -119,6 +123,17 @@ class ClimbViewController: UIViewController {
         self.g_lastAltitudeMark = NSNumber.init(float: 0.0)
         stopButton.enabled = false
         startButton.enabled = true
+        
+//        let realm  = try! Realm()
+        let results = RLMRealm.defaultRealm().allObjects("AltDataPt")
+        
+        let set = RealmLineDataSet(results: results, yValueField: "altitude", label: "altitunde")
+        var dataSets = [set]
+        
+        let data = RealmLineData(results: results, xValueField: "time", dataSets: dataSets)
+        altitudeGraphView.data = data
+        altitudeGraphView.animate(yAxisDuration: 1.4)
+        
     }
     
     
